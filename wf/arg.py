@@ -14,17 +14,15 @@ def fargene(contigs: LatchFile, sample_name: str, hmm_model: str) -> LatchDir:
     _fargene_cmd = [
         "fargene",
         "-i",
-        str(contigs),
+        str(contigs.local_path),
         "--hmm-model",
         hmm_model,
         "-o",
         output_dir_name,
-        "--logfile",
-        f"{output_dir_name}/{sample_name}_fargene.log",
         "-p",
         "8",
     ]
 
     subprocess.run(_fargene_cmd)
 
-    return LatchDir(str(outdir), f"latch:///contigfunc/{sample_name}/{output_dir_name}")
+    return LatchDir(str(outdir), f"latch:///contigfunc_{sample_name}/{output_dir_name}")

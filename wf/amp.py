@@ -15,7 +15,7 @@ def macrel(contigs: LatchFile, sample_name: str) -> LatchDir:
         "macrel",
         "contigs",
         "--fasta",
-        str(contigs),
+        str(contigs.local_path),
         "--output",
         str(outdir),
         "--tag",
@@ -28,4 +28,4 @@ def macrel(contigs: LatchFile, sample_name: str) -> LatchDir:
 
     subprocess.run(_macrel_cmd)
 
-    return LatchDir(str(outdir), f"latch:///contigfunc/{sample_name}/{output_dir_name}")
+    return LatchDir(str(outdir), f"latch:///contigfunc_{sample_name}/{output_dir_name}")
