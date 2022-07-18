@@ -1,4 +1,4 @@
-FROM 812206152185.dkr.ecr.us-west-2.amazonaws.com/latch-base:6839-main
+FROM 812206152185.dkr.ecr.us-west-2.amazonaws.com/latch-base:9a7d-main
 
 RUN apt-get install -y curl unzip libz-dev
 
@@ -12,8 +12,17 @@ ENV CONDA_DIR /opt/conda
 RUN bash miniconda.sh -b -p /opt/conda
 ENV PATH=$CONDA_DIR/bin:$PATH
 
-# Install macrel
-RUN conda install -y -c bioconda macrel
+# Get Mamba
+RUN conda install mamba -n base -c conda-forge
+
+# Get Macrel
+RUN mamba install -y -c bioconda macrel 
+# RUN conda create -y -n contigfunc python=3.9
+# RUN conda install -y -n contigfunc -c bioconda macrel
+# ENV FUNC_ENV /opt/conda/envs/contigfunc/bin
+
+# Create symlink
+# RUN ln -s $FUNC_ENV/macrel /root/macrel
 
 # STOP HERE:
 # The following lines are needed to ensure your build environement works
