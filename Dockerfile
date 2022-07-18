@@ -17,11 +17,13 @@ RUN conda install mamba -n base -c conda-forge
 
 # Get Macrel
 RUN mamba install -y -c bioconda macrel 
-# RUN conda create -y -n contigfunc python=3.9
-# RUN conda install -y -n contigfunc -c bioconda macrel
-# ENV FUNC_ENV /opt/conda/envs/contigfunc/bin
 
-# Create symlink
+# Get FarGene
+RUN mamba create -y -n fargene_env python=2.7
+RUN mamba install -y -n fargene_env -c bioconda fargene
+ENV PATH=/opt/conda/envs/fargene_env/bin:$PATH
+
+# # Create symlink
 # RUN ln -s $FUNC_ENV/macrel /root/macrel
 
 # STOP HERE:

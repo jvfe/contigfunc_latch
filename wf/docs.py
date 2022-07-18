@@ -21,4 +21,9 @@ CONTIGFUNC_DOCS.parameters = {
         display_name="Sample name",
         description="Sample name (will define output file names)",
     ),
+    "fargene_hmm_model": LatchParameter(
+        display_name="fARGene's HMM model",
+        description="The Hidden Markov Model that should be used to predict ARGs from the data",
+        section_title="Other parameters"
+    )
 }
