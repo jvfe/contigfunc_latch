@@ -4,27 +4,25 @@ from pathlib import Path
 from latch import small_task
 from latch.types import LatchDir, LatchFile
 
-from .types import fARGeneModel
-
 
 @small_task
-def fargene(contigs: LatchFile, sample_name: str, hmm_model: fARGeneModel) -> LatchDir:
+def gecco(contigs: LatchFile, sample_name: str) -> LatchDir:
 
-    output_dir_name = "fargene_results"
+    output_dir_name = "gecco_results"
     outdir = Path(output_dir_name).resolve()
 
-    _fargene_cmd = [
-        "fargene",
-        "-i",
+    _gecco_cmd = [
+        "gecco",
+        "run",
+        "-g",
         str(contigs.local_path),
-        "--hmm-model",
-        hmm_model.value,
         "-o",
         output_dir_name,
-        "-p",
-        "8",
+        "-j",
+        "4",
+        "--force-tsv",
     ]
 
-    subprocess.run(_fargene_cmd)
+    subprocess.run(_gecco_cmd)
 
     return LatchDir(str(outdir), f"latch:///contigfunc_{sample_name}/{output_dir_name}")

@@ -23,6 +23,9 @@ RUN mamba create -y -n fargene_env python=2.7
 RUN mamba install -y -n fargene_env -c bioconda fargene
 ENV PATH=/opt/conda/envs/fargene_env/bin:$PATH
 
+# Get Gecco
+RUN pip3 install gecco-tool
+
 # # Create symlink
 # RUN ln -s $FUNC_ENV/macrel /root/macrel
 
