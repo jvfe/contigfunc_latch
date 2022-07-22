@@ -59,8 +59,8 @@ LaunchPlan(
     contigfunc,  # workflow name
     "Test Contigs",  # name of test data
     {
-        "contigs": LatchFile("latch://shared/ExampleSeqs/example_contigs.fna"),
-        "sample_name": "contigfunc_test",
+        "contigs": LatchFile("latch:///ExampleSeqs/example_contigs.fna"),
+        "sample_name": "example_contigs",
         "fargene_hmm_model": fARGeneModel.class_b_1_2,
     },
 )
