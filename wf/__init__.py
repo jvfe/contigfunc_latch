@@ -1,6 +1,7 @@
 from typing import List, Union
 
 from latch import workflow
+from latch.resources.launch_plan import LaunchPlan
 from latch.types import LatchDir, LatchFile
 
 from .amp import macrel
@@ -52,3 +53,14 @@ def contigfunc(
     gecco_results = gecco(contigs=contigs, sample_name=sample_name)
 
     return [macrel_results, gecco_results, fargene_results]
+
+
+LaunchPlan(
+    contigfunc,  # workflow name
+    "Test Contigs",  # name of test data
+    {
+        "contigs": LatchFile("latch://shared/ExampleSeqs/example_contigs.fna"),
+        "sample_name": "contigfunc_test",
+        "fargene_hmm_model": fARGeneModel.class_b_1_2,
+    },
+)

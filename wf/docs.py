@@ -14,7 +14,7 @@ CONTIGFUNC_DOCS = LatchMetadata(
 CONTIGFUNC_DOCS.parameters = {
     "contigs": LatchParameter(
         display_name="Assembled Contigs",
-        description="FASTA file with assembled contigs",
+        description="FASTA (nucleotide) file with assembled contigs",
         section_title="Data",
     ),
     "sample_name": LatchParameter(
@@ -24,6 +24,6 @@ CONTIGFUNC_DOCS.parameters = {
     "fargene_hmm_model": LatchParameter(
         display_name="fARGene's HMM model",
         description="The Hidden Markov Model that should be used to predict ARGs from the data",
-        section_title="Other parameters"
-    )
+        section_title="Other parameters",
+    ),
 }
